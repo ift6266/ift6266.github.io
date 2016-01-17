@@ -1,27 +1,26 @@
 
-  
-    <!DOCTYPE HTML>
+ <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
   <meta charset="UTF-8">
   
-    <title>about | Blog IFT6266 H16</title>
+    <title>How to build your own blog using Hexo tool | Blog IFT6266 H16</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Yifan Nie">
     
 
     
-    <meta name="description" content="This is a course blog for IFT6266 of UdeMIf you have questions, please don’t hesitate to contact me atE-mail: yifan.nie@umontreal.ca">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+    <meta name="description" content="Hi there,This is a tech memo to show how to build your own blog using a website generating tool called Hexo.You only have to configure the config file and the tool will automatically generate the html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to build your own blog using Hexo tool">
+<meta property="og:url" content="http://yoursite.com/2016/01/17/building website/index.html">
 <meta property="og:site_name" content="Blog IFT6266 H16">
-<meta property="og:description" content="This is a course blog for IFT6266 of UdeMIf you have questions, please don’t hesitate to contact me atE-mail: yifan.nie@umontreal.ca">
-<meta property="og:updated_time" content="2016-01-17T04:18:48.000Z">
+<meta property="og:description" content="Hi there,This is a tech memo to show how to build your own blog using a website generating tool called Hexo.You only have to configure the config file and the tool will automatically generate the html">
+<meta property="og:updated_time" content="2016-01-17T20:34:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="This is a course blog for IFT6266 of UdeMIf you have questions, please don’t hesitate to contact me atE-mail: yifan.nie@umontreal.ca">
+<meta name="twitter:title" content="How to build your own blog using Hexo tool">
+<meta name="twitter:description" content="Hi there,This is a tech memo to show how to build your own blog using a website generating tool called Hexo.You only have to configure the config file and the tool will automatically generate the html">
 
     
     <link rel="alternative" href="/atom.xml" title="Blog IFT6266 H16" type="application/atom+xml">
@@ -36,9 +35,9 @@
     <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 
-      <body>
-        <header>
-          
+  <body>
+    <header>
+      
 <div>
 		
 			<div id="textlogo">
@@ -69,29 +68,64 @@
 				</ul>
 			</nav>			
 </div>
-        </header>
-        <div id="container">
-          <div id="main" class="page" itemscope itemprop="blogPost">
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
   
 	<article itemprop="articleBody"> 
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/about/index.html" title="about" itemprop="url">about</a>
+      <a href="/2016/01/17/building website/" title="How to build your own blog using Hexo tool" itemprop="url">How to build your own blog using Hexo tool</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Yifan Nie" target="_blank" itemprop="author">Yifan Nie</a>
 		
   <p class="article-time">
-    <time datetime="2016-01-17T04:09:51.000Z" itemprop="datePublished"> Published 2016-01-16</time>
+    <time datetime="2016-01-18T04:09:51.000Z" itemprop="datePublished"> Published 2016-01-17</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<p>This is a course blog for IFT6266 of UdeM<br>If you have questions, please don’t hesitate to contact me at<br>E-mail: yifan.nie@umontreal.ca</p>
-  
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			
+		
+		</div>
+		
+		<p>Hi there,<br>This is a tech memo to show how to build your own blog using a website generating tool called Hexo.<br>You only have to configure the config file and the tool will automatically generate the html, css files for you. Then, you can upload your website to the Internet.</p>
+<p>First, you should download the required software: </p>
+<ol>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a></li>
+<li><a href="https://git-scm.com/download/" target="_blank" rel="external">Git</a></li>
+<li><a href="https://hexo.io" target="_blank" rel="external">Hexo</a></li>
+</ol>
+<p>Thoses 3 pieces of software provide both multi platform support such as linux, windows, mac…<br>Installation of the Node.js and Git software should be straight forward, since they provide a GUI installer.</p>
+<p>Then you should install Hexo tool (the web generating tool) through the git command line. In mac or linux it is integrated into your terminal (Shell), and in windows it will install a Git Bash and you should click open that terminal.</p>
+<p>When you have opened a terminal, you can just type the following command to install npm through git：</p>
+<pre><code>$ npm install hexo-cli -g
+$ npm install hexo --save
+</code></pre><p>Then you can cd into the folder that you intend to put website files and execute</p>
+<pre><code>$ hexo init
+$ npm install
+</code></pre><p>And then you can install the Hexo plug-ins</p>
+<pre><code>npm install hexo-generator-index --save
+npm install hexo-generator-archive --save
+npm install hexo-generator-category --save
+npm install hexo-generator-tag --save
+npm install hexo-server --save
+npm install hexo-deployer-git --save
+npm install hexo-deployer-heroku --save
+npm install hexo-deployer-rsync --save
+npm install hexo-deployer-openshift --save
+npm install hexo-renderer-marked@0.2 --save
+npm install hexo-renderer-stylus@0.2 --save
+npm install hexo-generator-feed@1 --save
+npm install hexo-generator-sitemap@1 --save
+</code></pre>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -103,7 +137,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/about/index.html" data-title="about | Blog IFT6266 H16" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2016/01/17/building website/" data-title="How to build your own blog using Hexo tool | Blog IFT6266 H16" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -114,11 +148,74 @@
    	       
 	</article>
 	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/01/17/add latex/" title="Writing latex formulas with markdown language in Hexo">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Writing latex formulas with markdown language in Hexo</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/01/16/blog built/"  title="Blog Built">
+ <strong>下一篇：</strong><br/> 
+ <span>Blog Built
+</span>
+</a>
+</div>
+
+</nav>
+
 	
 
 </div>  
-        </div>
-        <footer><div id="footer" >
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://diro.umontreal.ca" target="_blank" title="UdeM DIRO">UdeM DIRO</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
 	
 	<div class="line">
 		<span></span>
@@ -155,7 +252,7 @@
 		</p>
 </div>
 </footer>
-        <script src="/js/jquery-2.0.3.min.js"></script>
+    <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 <script src="/js/jquery.qrcode-0.12.0.min.js"></script>
@@ -199,8 +296,36 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
   });
 });
 </script>
@@ -331,6 +456,5 @@ MathJax.Hub.Config({
 <script type="text/javascript"
    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
-      </body>
-     </html>
-     
+  </body>
+</html>
