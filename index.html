@@ -120,9 +120,11 @@ $ #type your password
 <pre><code>$ conda install mkl
 </code></pre><ol>
 <li><p>Finally you can check if the MKL Blas library is correctly installed</p>
-<p> $ python<br> ‘’’python<br> import nunmpy as np<br> np.<strong>config</strong>.show()<br> ‘’’<br>If there’s something MKL in the BLAS info, you are done.</p>
+<p> $ python</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> nunmpy <span class="keyword">as</span> np</span><br><span class="line">np.__config__.show()</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<p>If there’s something MKL in the BLAS info, you are done.</p>
 <p>Trouble shooting:<br>Sometimes, with olders anaconda versions (such as 2.4.1), the MKL will give warning saying the license will expire in xxx days, actually it’s already free now. You can repair by either install anaconda 2.5.0 (newer anaconda has already fixed it) or fix older installed version by:</p>
 <p>set your installation to use the mkl-linked libraries that do not require a license</p>
 <pre><code>$conda remove mkl-rt
