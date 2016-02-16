@@ -17,7 +17,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/02/15/install_anaconda_remote/index.html">
 <meta property="og:site_name" content="Blog IFT6266 H16">
 <meta property="og:description" content="Hello,Here is a memo to show how to install anaconda (integreted package of numpy, scipy, matplotlib,…etc…) on the Hades remote machine.As you know, anaconda is an integrated package containing a lot">
-<meta property="og:updated_time" content="2016-02-16T01:45:13.000Z">
+<meta property="og:updated_time" content="2016-02-16T01:48:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Installing Anaconda on the remote Hades machine">
 <meta name="twitter:description" content="Hello,Here is a memo to show how to install anaconda (integreted package of numpy, scipy, matplotlib,…etc…) on the Hades remote machine.As you know, anaconda is an integrated package containing a lot">
@@ -126,10 +126,9 @@ $ #type your password
 <pre><code>$ conda install mkl
 </code></pre><ol>
 <li><p>Finally you can check if the MKL Blas library is correctly installed</p>
-<p> $ python<br> $ import nunmpy as np<br> $ np.<strong>config</strong>.show()</p>
+<p> $ python<br> ‘’’python<br> import nunmpy as np<br> np.<strong>config</strong>.show()<br> ‘’’<br>If there’s something MKL in the BLAS info, you are done.</p>
 </li>
 </ol>
-<p>If there’s something MKL in the BLAS info, you are done.</p>
 <p>Trouble shooting:<br>Sometimes, with olders anaconda versions (such as 2.4.1), the MKL will give warning saying the license will expire in xxx days, actually it’s already free now. You can repair by either install anaconda 2.5.0 (newer anaconda has already fixed it) or fix older installed version by:</p>
 <p>set your installation to use the mkl-linked libraries that do not require a license</p>
 <pre><code>$conda remove mkl-rt
