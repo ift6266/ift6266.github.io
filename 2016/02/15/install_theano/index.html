@@ -11,16 +11,19 @@
     
 
     
-    <meta name="description" content="Hello,Here is a memo to show how to install anaconda (integreted package of numpy, scipy, matplotlib,…etc…) on the Hades remote machine.As you know, anaconda is an integrated package containing a lot">
+    <meta name="description" content="Hello,Here is a memo to show how to install the theano deep learning package on the Hades remote machine or on local machine. 
+It’s very easy to use  git to “clone” a copy of installation files onto t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Installing Anaconda on the remote Hades machine">
-<meta property="og:url" content="http://yoursite.com/2016/02/15/install_anaconda_remote/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/02/15/install_theano/index.html">
 <meta property="og:site_name" content="Blog IFT6266 H16">
-<meta property="og:description" content="Hello,Here is a memo to show how to install anaconda (integreted package of numpy, scipy, matplotlib,…etc…) on the Hades remote machine.As you know, anaconda is an integrated package containing a lot">
-<meta property="og:updated_time" content="2016-02-16T01:53:38.000Z">
+<meta property="og:description" content="Hello,Here is a memo to show how to install the theano deep learning package on the Hades remote machine or on local machine. 
+It’s very easy to use  git to “clone” a copy of installation files onto t">
+<meta property="og:updated_time" content="2016-02-20T01:49:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Installing Anaconda on the remote Hades machine">
-<meta name="twitter:description" content="Hello,Here is a memo to show how to install anaconda (integreted package of numpy, scipy, matplotlib,…etc…) on the Hades remote machine.As you know, anaconda is an integrated package containing a lot">
+<meta name="twitter:description" content="Hello,Here is a memo to show how to install the theano deep learning package on the Hades remote machine or on local machine. 
+It’s very easy to use  git to “clone” a copy of installation files onto t">
 
     
     <link rel="alternative" href="/atom.xml" title="Blog IFT6266 H16" type="application/atom+xml">
@@ -76,7 +79,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/02/15/install_anaconda_remote/" title="Installing Anaconda on the remote Hades machine" itemprop="url">Installing Anaconda on the remote Hades machine</a>
+      <a href="/2016/02/15/install_theano/" title="Installing Anaconda on the remote Hades machine" itemprop="url">Installing Anaconda on the remote Hades machine</a>
   </h1>
   <p class="article-author">By
        
@@ -96,52 +99,36 @@
 		
 		</div>
 		
-		<p>Hello,<br>Here is a memo to show how to install anaconda (integreted package of numpy, scipy, matplotlib,…etc…) on the Hades remote machine.<br>As you know, anaconda is an integrated package containing a lot of useful packages such as numpy, matplotlib etc… so you don’t have to install them one by one. Another benefit is that we can easily install a version of MKL blas library, if installed seperately, that will cause a lot of time and may be imcompatible.</p>
-<p>Because we are using the remote machine, we are only a normal user and don’t have sudo prililege. So there are several ways to install it to our user’s directory.</p>
-<p>One easist way is to download the compiled anaconda installer for linux anaconda-2.5.0-x86_64.sh from the anaconda’s repo. And then upload it to the remote machine’s storage, and then install it directly on the remote machine</p>
-<p><a href="https://repo.continuum.io/archive/index.html" target="_blank" rel="external">anaconda repo</a></p>
-<p>You can choose a version that best suits your OS and your need (python2 or python3), download it to your local machine and then upload it to the remote machine.</p>
-<p>Another easier way is to download it directly from your remote machine:</p>
-<p>1.first log on to the remote machine by ssh by typing:</p>
-<pre><code>$ ssh username@hades.calculquebec.ca
-$ #type your password
-</code></pre><ol>
-<li><p>using wget command to download the anaconda package directly from your remote machine    </p>
-<p> $ wget <a href="https://repo.continuum.io/archive/Anaconda2-2.5.0-Linux-x86_64.sh" target="_blank" rel="external">https://repo.continuum.io/archive/Anaconda2-2.5.0-Linux-x86_64.sh</a></p>
-</li>
-</ol>
-<p>This command will download the installer file from the repo direcly to your remote machine.</p>
-<ol>
-<li><p>install the anaconda on the remote machine by executing it:</p>
-<p> $ bash Anaconda2-2.5.0-Linux-x86_64.sh</p>
-</li>
-</ol>
-<p>And then just follow the text instructions, always type yes or y to agreee with the license agreements…Then it will install, you can see the installation progress.</p>
-<ol>
-<li><p>update the environment variable and make that take effect immediately</p>
-<p> $ source .bashrc</p>
-</li>
-</ol>
-<p>5.And when this anaconda is installed , you’d better to install intel’s MKL Blas library, this will help better linear algebra calculations. </p>
-<pre><code>$ conda install mkl
-</code></pre><ol>
-<li><p>Finally you can check if the MKL Blas library is correctly installed</p>
-<p> $ python</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> nunmpy <span class="keyword">as</span> np</span><br><span class="line">np.__config__.show()</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>If there’s something MKL in the BLAS info, you are done.</p>
-<p>Trouble shooting:<br>Sometimes, with olders anaconda versions (such as 2.4.1), the MKL will give warning saying the license will expire in xxx days, actually it’s already free now. You can repair by either install anaconda 2.5.0 (newer anaconda has already fixed it) or fix older installed version by:</p>
-<p>set your installation to use the mkl-linked libraries that do not require a license</p>
-<pre><code>$conda remove mkl-rt
-$conda install -f mkl
+		<p>Hello,<br>Here is a memo to show how to install the theano deep learning package on the Hades remote machine or on local machine. </p>
+<p>It’s very easy to use  git to “clone” a copy of installation files onto the remote machine or on your own local machine.</p>
+<p>But if you don’t have git installed on the remote machine or local machine, please first do:</p>
+<pre><code>$ sudo apt-get install git-all
+</code></pre><p>If you already have git installed you can do the following to clone a copy of the theano package to your machine:</p>
+<pre><code>$ git clone https://github.com/Theano/Theano
+</code></pre><p>This will download the theano package into your home directory</p>
+<p>Then you can just install it by typing the commands:<br>Be careful, if your numpy,…ect are installed with anaconda python, you should make sure that your python command (interpreter) here is anaconda’s, and the anaconda should be installed with your user prililege not root. You can veryfy by typing from home:</p>
+<pre><code>$ ls -lr
+</code></pre><p>to see if the anaconda direcory’s owner is you.</p>
+<p>Then cd to the Theano directory to install:</p>
+<pre><code>$ cd ~/Theano
+$ python setip.py develop
+</code></pre><p>The installation should be fast and straightforward.</p>
+<p>Then you should configure the Theano to make use of your GPU</p>
+<p>You can just create a config file named .theanorc</p>
+<p>to your home dir that is ~/.theanorc:</p>
+<pre><code><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">[cuda]</span></span><br><span class="line"><span class="setting">root = <span class="value">/usr/local/cuda-<span class="number">7.5</span></span></span></span><br><span class="line"><span class="title">[global]</span></span><br><span class="line"><span class="setting">floatX = <span class="value">float32</span></span></span><br><span class="line"><span class="setting">device = <span class="value">gpu0</span></span></span><br><span class="line"><span class="title">[nvcc]</span></span><br><span class="line"><span class="setting">fastmath = <span class="value"><span class="keyword">True</span></span></span></span><br></pre></td></tr></table></figure>
+</code></pre><p>If you don’t like to create this config file you can also create a environment variable called $CUDA_ROOT<br>    by </p>
+<pre><code>$ export CUDA_ROOT = /usr/local/cuda-7.5:$CUDA_ROOT
+$ source ~/.bashrc
 
-run conda install with the specific packages you choose or with all of Anaconda:
-$conda install numpy scipy scikit-learn numexpr
+Then you can test by login to python interpreter
 
-or update the whole anaconda to 2.5 or newer
-$conda install anaconda=2.5
-</code></pre>  
+$ python
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> theano</span><br></pre></td></tr></table></figure>
+</code></pre><p>If the GPU is properly configured, there will be info about your GPU printed on the screen.</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -153,7 +140,7 @@ $conda install anaconda=2.5
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2016/02/15/install_anaconda_remote/" data-title="Installing Anaconda on the remote Hades machine | Blog IFT6266 H16" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2016/02/15/install_theano/" data-title="Installing Anaconda on the remote Hades machine | Blog IFT6266 H16" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -166,19 +153,11 @@ $conda install anaconda=2.5
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/02/15/install_theano/" title="Installing Anaconda on the remote Hades machine">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Installing Anaconda on the remote Hades machine</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/01/17/add latex/"  title="Writing latex formulas with markdown language in Hexo">
+<a href="/2016/02/15/install_anaconda_remote/"  title="Installing Anaconda on the remote Hades machine">
  <strong>下一篇：</strong><br/> 
- <span>Writing latex formulas with markdown language in Hexo
+ <span>Installing Anaconda on the remote Hades machine
 </span>
 </a>
 </div>
