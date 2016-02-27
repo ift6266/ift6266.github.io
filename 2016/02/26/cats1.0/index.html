@@ -4,26 +4,27 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Installing Theano and configure the GPU | Blog IFT6266 H16</title>
+    <title>Cats and Dogs 1 | Blog IFT6266 H16</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Yifan Nie">
     
 
     
-    <meta name="description" content="Hello,Here is a memo to show how to install the theano deep learning package on the Hades remote machine or on local machine. 
-It’s very easy to use  git to “clone” a copy of installation files onto t">
+    <meta name="description" content="Hi,Just have a first try of cats and dogs project, the loading of the dataset does took me some time.In this experiment, I’m using a 3-convolution layered CNNThe configurations are as follows:
+num_epo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Installing Theano and configure the GPU">
-<meta property="og:url" content="http://yoursite.com/2016/02/19/install_theano/index.html">
+<meta property="og:title" content="Cats and Dogs 1">
+<meta property="og:url" content="http://yoursite.com/2016/02/26/cats1.0/index.html">
 <meta property="og:site_name" content="Blog IFT6266 H16">
-<meta property="og:description" content="Hello,Here is a memo to show how to install the theano deep learning package on the Hades remote machine or on local machine. 
-It’s very easy to use  git to “clone” a copy of installation files onto t">
-<meta property="og:updated_time" content="2016-02-20T01:51:27.000Z">
+<meta property="og:description" content="Hi,Just have a first try of cats and dogs project, the loading of the dataset does took me some time.In this experiment, I’m using a 3-convolution layered CNNThe configurations are as follows:
+num_epo">
+<meta property="og:image" content="http://yoursite.com/image/cats1.jpg">
+<meta property="og:updated_time" content="2016-02-26T16:01:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Installing Theano and configure the GPU">
-<meta name="twitter:description" content="Hello,Here is a memo to show how to install the theano deep learning package on the Hades remote machine or on local machine. 
-It’s very easy to use  git to “clone” a copy of installation files onto t">
+<meta name="twitter:title" content="Cats and Dogs 1">
+<meta name="twitter:description" content="Hi,Just have a first try of cats and dogs project, the loading of the dataset does took me some time.In this experiment, I’m using a 3-convolution layered CNNThe configurations are as follows:
+num_epo">
 
     
     <link rel="alternative" href="/atom.xml" title="Blog IFT6266 H16" type="application/atom+xml">
@@ -79,14 +80,14 @@ It’s very easy to use  git to “clone” a copy of installation files onto t"
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/02/19/install_theano/" title="Installing Theano and configure the GPU" itemprop="url">Installing Theano and configure the GPU</a>
+      <a href="/2016/02/26/cats1.0/" title="Cats and Dogs 1" itemprop="url">Cats and Dogs 1</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Yifan Nie" target="_blank" itemprop="author">Yifan Nie</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-20T01:04:51.000Z" itemprop="datePublished"> Published 2016-02-19</time>
+    <time datetime="2016-02-27T01:04:51.000Z" itemprop="datePublished"> Published 2016-02-26</time>
     
   </p>
 </header>
@@ -99,35 +100,22 @@ It’s very easy to use  git to “clone” a copy of installation files onto t"
 		
 		</div>
 		
-		<p>Hello,<br>Here is a memo to show how to install the theano deep learning package on the Hades remote machine or on local machine. </p>
-<p>It’s very easy to use  git to “clone” a copy of installation files onto the remote machine or on your own local machine.</p>
-<p>But if you don’t have git installed on the remote machine or local machine, please first do:</p>
-<pre><code>$ sudo apt-get install git-all
-</code></pre><p>If you already have git installed you can do the following to clone a copy of the theano package to your machine:</p>
-<pre><code>$ git clone https://github.com/Theano/Theano
-</code></pre><p>This will download the theano package into your home directory</p>
-<p>Then you can just install it by typing the commands:<br>Be careful, if your numpy,…ect are installed with anaconda python, you should make sure that your python command (interpreter) here is anaconda’s, and the anaconda should be installed with your user prililege not root. You can veryfy by typing from home:</p>
-<pre><code>$ ls -lr
-</code></pre><p>to see if the anaconda direcory’s owner is you.</p>
-<p>Then cd to the Theano directory to install:</p>
-<pre><code>$ cd ~/Theano
-$ python setip.py develop
-</code></pre><p>The installation should be fast and straightforward.</p>
-<p>Then you should configure the Theano to make use of your GPU</p>
-<p>You can just create a config file named .theanorc</p>
-<p>to your home dir that is ~/.theanorc:</p>
-<pre><code><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">[cuda]</span></span><br><span class="line"><span class="setting">root = <span class="value">/usr/local/cuda-<span class="number">7.5</span></span></span></span><br><span class="line"><span class="title">[global]</span></span><br><span class="line"><span class="setting">floatX = <span class="value">float32</span></span></span><br><span class="line"><span class="setting">device = <span class="value">gpu0</span></span></span><br><span class="line"><span class="title">[nvcc]</span></span><br><span class="line"><span class="setting">fastmath = <span class="value"><span class="keyword">True</span></span></span></span><br></pre></td></tr></table></figure>
-</code></pre><p>If you don’t like to create this config file you can also create a environment variable called $CUDA_ROOT<br>    by </p>
-<pre><code>$ export CUDA_ROOT = /usr/local/cuda-7.5:$CUDA_ROOT
-$ source ~/.bashrc
-
-Then you can test by login to python interpreter
-
-$ python
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> theano</span><br></pre></td></tr></table></figure>
-</code></pre><p>If the GPU is properly configured, there will be info about your GPU printed on the screen.</p>
+		<p>Hi,<br>Just have a first try of cats and dogs project, the loading of the dataset does took me some time.<br>In this experiment, I’m using a 3-convolution layered CNN<br>The configurations are as follows:</p>
+<pre><code>num_epochs= 100
+image_shape = (128,128)
+filter_sizes = [(5,5),(5,5),(5,5)]
+feature_maps = [20,50,80]
+pooling_sizes = [(2,2),(2,2),(2,2)]
+mlp_hiddens = [1000]
+output_size = 2
+weights_init=Uniform(width=0.2)
+step_rule=Scale(learning_rate=0.1)
+</code></pre><p>The result is after 100 epochs is that training error=26.31%, validation error= 25.77%</p>
+<p>I still have some difficulty to plot the learning curves because of the Bokeh live plot problem, it always prompts me that it cannot import curstate module….</p>
+<p>I tried to unpackage the pickled log file but pickle also throws error:<br>AttributeError : Unpickler instance has no attibute ‘persistent_load’. I’m trying to fix it and for the moment I have to post just a snapshot of the console snapshot.</p>
+<p><img src="/image/cats1.jpg" alt="cats and dogs 1 result"></p>
+<p>The learning is kind of slow, the training loss and training error decreases very slowly, I don’t know why, because the prof said using SDG will bring the loss/training error rate quickly down at first several epochs…</p>
+<p>I’ll try to investigate this problem.</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -140,7 +128,7 @@ $ python
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2016/02/19/install_theano/" data-title="Installing Theano and configure the GPU | Blog IFT6266 H16" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2016/02/26/cats1.0/" data-title="Cats and Dogs 1 | Blog IFT6266 H16" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -154,18 +142,18 @@ $ python
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2016/02/26/cats1.0/" title="Cats and Dogs 1">
+ <a href="/2016/02/27/cats1.01/" title="Cats and Dogs 1.01">
   <strong>上一篇：</strong><br/>
   <span>
-  Cats and Dogs 1</span>
+  Cats and Dogs 1.01</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2016/02/15/install_anaconda_remote/"  title="Installing Anaconda on the remote Hades machine">
+<a href="/2016/02/19/install_theano/"  title="Installing Theano and configure the GPU">
  <strong>下一篇：</strong><br/> 
- <span>Installing Anaconda on the remote Hades machine
+ <span>Installing Theano and configure the GPU
 </span>
 </a>
 </div>

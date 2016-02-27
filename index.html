@@ -77,7 +77,73 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/02/26/cats1/" title="Cats and Dogs 1" itemprop="url">Cats and Dogs 1</a>
+      <a href="/2016/02/27/cats1.01/" title="Cats and Dogs 1.01" itemprop="url">Cats and Dogs 1.01</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Yifan Nie" target="_blank" itemprop="author">Yifan Nie</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-27T18:04:51.000Z" itemprop="datePublished"> Published 2016-02-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>Hi,<br>I’ve tried another time the same configuration as in experiment 1, still with random initialization of the weights, just to add the Bokeh plotting, but the results seems to be worse than experiment 1<br>In this experiment, I’m using a 3-convolution layered CNN<br>The configurations are as follows:</p>
+<pre><code>num_epochs= 100 early stopped
+image_shape = (128,128)
+filter_sizes = [(5,5),(5,5),(5,5)]
+feature_maps = [20,50,80]
+pooling_sizes = [(2,2),(2,2),(2,2)]
+mlp_hiddens = [1000]
+output_size = 2
+weights_init=Uniform(width=0.2)
+step_rule=Scale(learning_rate=0.1)
+max_image_dim_limit_method= random crop
+</code></pre><p>The result is after 100 epochs is that training error=35%, validation error= 35%</p>
+<p><img src="/image/main11.png" alt="cats and dogs 1 result"></p>
+<p>I kind of understand why the learning is kind of slow and why there’s no overfitting phenomen in 1.0 and 1.01 because I used RandomFixedSizeCrop to limit the max size of image to 128*128. This might crop the unimportant area area and label it as cats/dogs thus create some noises…<br>In next experiments, inspired by Florian’s approach, I will try to modify the MinimumImageDimension function so as to limit the maximum Image dimension.</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/02/27/cats1.01/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/02/26/cats1.0/" title="Cats and Dogs 1" itemprop="url">Cats and Dogs 1</a>
   </h1>
   <p class="article-author">By
        
@@ -125,7 +191,7 @@ step_rule=Scale(learning_rate=0.1)
 <div class="comments-count">
 	
 	  	<span></span>
-		<a href="/2016/02/26/cats1/#disqus_thread" class="comments-count-link">Comments</a>
+		<a href="/2016/02/26/cats1.0/#disqus_thread" class="comments-count-link">Comments</a>
 	
 </div>
 
