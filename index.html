@@ -77,6 +77,75 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/02/27/cats2/" title="Cats and Dogs 2 valid_err=19.91%" itemprop="url">Cats and Dogs 2 valid_err=19.91%</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Yifan Nie" target="_blank" itemprop="author">Yifan Nie</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-27T19:26:51.000Z" itemprop="datePublished"> Published 2016-02-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>I also ran an experiment on the cluster, so I used a different architecture, So I called this experiment 2, however the image max size limiting method is still RandomFixedSizeCrop<br>In this experiment, I’m using a 3-convolution layered CNN<br>The configurations are as follows:</p>
+<pre><code>num_epochs= 100 early stopped
+image_shape = (128,128)
+filter_sizes = [(5,5),(5,5),(5,5),(4,4),(4,4),(4,4)]
+feature_maps = [20,40,60,80,100,120]
+pooling_sizes = [(2,2),(2,2),(2,2),(2,2),(2,2),(2,2)]
+mlp_hiddens = [1000]
+output_size = 2
+weights_init=Uniform(width=0.2)
+step_rule=Adam()
+max_image_dim_limit_method= RandomFixedSizeCrop
+dataset_processing = rescale to 128*128
+</code></pre><p>The result is after 100 epochs is that training error=19.57%, validation error=19.91%</p>
+<h2 id="TRAINING_HAS_BEEN_FINISHED_3A"><a href="#TRAINING_HAS_BEEN_FINISHED_3A" class="headerlink" title="TRAINING HAS BEEN FINISHED:"></a>TRAINING HAS BEEN FINISHED:</h2><p>Training status:<br>batch_interrupt_received: False<br>epoch_interrupt_received: False<br>epoch_started: False<br>epochs_done: 100<br>iterations_done: 31300<br>received_first_batch: True<br>resumed_from: None<br>training_started: True<br>Log records from the iteration 31300:<br>saved_to: (‘catsVsDogs128.pkl’,)<br>time_read_data_this_epoch: 1.25491786003<br>time_read_data_total: 453.110922098<br>time_train_this_epoch: 163.532570601<br>time_train_total: 16410.0936284<br>train_cost: 0.408693790436<br>train_error_rate: 0.195686891675<br>train_total_gradient_norm: 4.36319255829<br>training_finish_requested: True<br>training_finished: True<br>valid_cost: 0.452142506838<br>valid_error_rate: 0.199169307947<br>valid_error_rate2: 0.199169307947</p>
+<p>I kind of understand why the learning is kind of slow and why there’s no overfitting phenomen in 1.0 and 1.01 because I used RandomFixedSizeCrop to limit the max size of image to 128*128. This might crop the unimportant area area and label it as cats/dogs thus create some noises…<br>In next experiments, inspired by Florian’s approach, I will try to modify the MinimumImageDimension function so as to limit the maximum Image dimension.</p>
+<p>The same datset pre-processing with more layers does help to boost performance, and the last convolution layer has 120 feature maps, which feeds more features to the MLP classifier.</p>
+<p>In this experiment, I also used Adam() as learning rule, instead of fixed learning rate, this might also helps the performance to improve.</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/02/27/cats2/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/02/27/cats1.01/" title="Cats and Dogs 1.01" itemprop="url">Cats and Dogs 1.01</a>
   </h1>
   <p class="article-author">By
