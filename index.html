@@ -77,6 +77,73 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/02/27/cats1.2/" title="Cats and Dogs 1.2" itemprop="url">Cats and Dogs 1.2</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Yifan Nie" target="_blank" itemprop="author">Yifan Nie</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-27T21:24:51.000Z" itemprop="datePublished"> Published 2016-02-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>Hi,<br>As mentioned in Blog posts 1.1, the fixed learning rate might not be a good choice, if it is chosen too small, the learning is to slow, and even cannot pull the cost function to a better minimum, on the other hand, if it is set too big, the loss will decrease and may oscillate and even bounces back to a higher loss as encountered in the figure of experiment 1.01… So Adam() might be a better choice.</p>
+<p>In this experiment, I’m using the same 3-convolution layered CNN architecture as in 1 and 1.01<br>The configurations are as follows:</p>
+<pre><code>num_epochs= 100 early stopped
+image_shape = (128,128)
+filter_sizes = [(5,5),(5,5),(5,5)]
+feature_maps = [20,50,80]
+pooling_sizes = [(2,2),(2,2),(2,2)]
+mlp_hiddens = [1000]
+output_size = 2
+weights_init=Uniform(width=0.2)
+step_rule=Adam()
+max_image_dim_limit_method= MaximumImageDimension
+dataset_processing = rescale to 128*128
+</code></pre><p><img src="/image/main15.png" alt="cats and dogs 1 result"></p>
+<p>This time, we can still observe the phenomenon of overfitting, so I just stopped training at epoch 21 because the valid error no longer decreases, and stagnate at around 25% however the training error still goes down. So this architecture setting might has its limitaitons. So data augmentation is very important to avoid things like overfitting. I’ll try to use rotations transformations to regularize.</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/02/27/cats1.2/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/02/27/cats1.1/" title="Cats and Dogs 1.1" itemprop="url">Cats and Dogs 1.1</a>
   </h1>
   <p class="article-author">By

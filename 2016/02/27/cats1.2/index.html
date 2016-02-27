@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Cats and Dogs 1.1 | Blog IFT6266 H16</title>
+    <title>Cats and Dogs 1.2 | Blog IFT6266 H16</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Yifan Nie">
     
 
     
-    <meta name="description" content="Hi,As mentioned in Blog posts 1 and 1.01, the random fixed size crop doesn’t seems to be a good way to limit the size of image to a fixed size (e.g.128*128), so inspired by Florian’s blog, I used a mo">
+    <meta name="description" content="Hi,As mentioned in Blog posts 1.1, the fixed learning rate might not be a good choice, if it is chosen too small, the learning is to slow, and even cannot pull the cost function to a better minimum, o">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cats and Dogs 1.1">
-<meta property="og:url" content="http://yoursite.com/2016/02/27/cats1.1/index.html">
+<meta property="og:title" content="Cats and Dogs 1.2">
+<meta property="og:url" content="http://yoursite.com/2016/02/27/cats1.2/index.html">
 <meta property="og:site_name" content="Blog IFT6266 H16">
-<meta property="og:description" content="Hi,As mentioned in Blog posts 1 and 1.01, the random fixed size crop doesn’t seems to be a good way to limit the size of image to a fixed size (e.g.128*128), so inspired by Florian’s blog, I used a mo">
-<meta property="og:image" content="http://yoursite.com/image/main14.png">
-<meta property="og:updated_time" content="2016-02-27T19:42:48.000Z">
+<meta property="og:description" content="Hi,As mentioned in Blog posts 1.1, the fixed learning rate might not be a good choice, if it is chosen too small, the learning is to slow, and even cannot pull the cost function to a better minimum, o">
+<meta property="og:image" content="http://yoursite.com/image/main15.png">
+<meta property="og:updated_time" content="2016-02-27T21:31:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cats and Dogs 1.1">
-<meta name="twitter:description" content="Hi,As mentioned in Blog posts 1 and 1.01, the random fixed size crop doesn’t seems to be a good way to limit the size of image to a fixed size (e.g.128*128), so inspired by Florian’s blog, I used a mo">
+<meta name="twitter:title" content="Cats and Dogs 1.2">
+<meta name="twitter:description" content="Hi,As mentioned in Blog posts 1.1, the fixed learning rate might not be a good choice, if it is chosen too small, the learning is to slow, and even cannot pull the cost function to a better minimum, o">
 
     
     <link rel="alternative" href="/atom.xml" title="Blog IFT6266 H16" type="application/atom+xml">
@@ -77,14 +77,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/02/27/cats1.1/" title="Cats and Dogs 1.1" itemprop="url">Cats and Dogs 1.1</a>
+      <a href="/2016/02/27/cats1.2/" title="Cats and Dogs 1.2" itemprop="url">Cats and Dogs 1.2</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Yifan Nie" target="_blank" itemprop="author">Yifan Nie</a>
 		
   <p class="article-time">
-    <time datetime="2016-02-27T19:42:51.000Z" itemprop="datePublished"> Published 2016-02-27</time>
+    <time datetime="2016-02-27T21:24:51.000Z" itemprop="datePublished"> Published 2016-02-27</time>
     
   </p>
 </header>
@@ -97,7 +97,8 @@
 		
 		</div>
 		
-		<p>Hi,<br>As mentioned in Blog posts 1 and 1.01, the random fixed size crop doesn’t seems to be a good way to limit the size of image to a fixed size (e.g.128*128), so inspired by Florian’s blog, I used a modified version of MinImageDimension to do MaxImageDimension to limit the size of image to a fixed size.<br>In this experiment, I’m using the same 3-convolution layered CNN architecture as in 1 and 1.01<br>The configurations are as follows:</p>
+		<p>Hi,<br>As mentioned in Blog posts 1.1, the fixed learning rate might not be a good choice, if it is chosen too small, the learning is to slow, and even cannot pull the cost function to a better minimum, on the other hand, if it is set too big, the loss will decrease and may oscillate and even bounces back to a higher loss as encountered in the figure of experiment 1.01… So Adam() might be a better choice.</p>
+<p>In this experiment, I’m using the same 3-convolution layered CNN architecture as in 1 and 1.01<br>The configurations are as follows:</p>
 <pre><code>num_epochs= 100 early stopped
 image_shape = (128,128)
 filter_sizes = [(5,5),(5,5),(5,5)]
@@ -106,11 +107,11 @@ pooling_sizes = [(2,2),(2,2),(2,2)]
 mlp_hiddens = [1000]
 output_size = 2
 weights_init=Uniform(width=0.2)
-step_rule=Scale(learning_rate=0.05)
+step_rule=Adam()
 max_image_dim_limit_method= MaximumImageDimension
 dataset_processing = rescale to 128*128
-</code></pre><p><img src="/image/main14.png" alt="cats and dogs 1 result"></p>
-<p>This time, we can observe the phenomenon of overfitting, so I just stopped training at epoch 27 because the valid error no longer decreases… Maybe I will try to use Adam() update rules rather than fixed learning rate, and do rotations for the images in order to reduce overfitting.</p>
+</code></pre><p><img src="/image/main15.png" alt="cats and dogs 1 result"></p>
+<p>This time, we can still observe the phenomenon of overfitting, so I just stopped training at epoch 21 because the valid error no longer decreases, and stagnate at around 25% however the training error still goes down. So this architecture setting might has its limitaitons. So data augmentation is very important to avoid things like overfitting. I’ll try to use rotations transformations to regularize.</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -123,7 +124,7 @@ dataset_processing = rescale to 128*128
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2016/02/27/cats1.1/" data-title="Cats and Dogs 1.1 | Blog IFT6266 H16" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2016/02/27/cats1.2/" data-title="Cats and Dogs 1.2 | Blog IFT6266 H16" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -136,19 +137,11 @@ dataset_processing = rescale to 128*128
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/02/27/cats1.2/" title="Cats and Dogs 1.2">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Cats and Dogs 1.2</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/02/27/cats2/"  title="Cats and Dogs 2 valid_err=19.91%">
+<a href="/2016/02/27/cats1.1/"  title="Cats and Dogs 1.1">
  <strong>下一篇：</strong><br/> 
- <span>Cats and Dogs 2 valid_err=19.91%
+ <span>Cats and Dogs 1.1
 </span>
 </a>
 </div>
