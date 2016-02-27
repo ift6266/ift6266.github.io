@@ -101,6 +101,7 @@ output_size = 2
 weights_init=Uniform(width=0.2)
 step_rule=Scale(learning_rate=0.1)
 max_image_dim_limit_method= random crop
+dataset_processing = rescale to 128*128
 </code></pre><p>The result is after 100 epochs is that training error=35%, validation error= 35%</p>
 <p><img src="/image/main11.png" alt="cats and dogs 1 result"></p>
 <p>I kind of understand why the learning is kind of slow and why there’s no overfitting phenomen in 1.0 and 1.01 because I used RandomFixedSizeCrop to limit the max size of image to 128*128. This might crop the unimportant area area and label it as cats/dogs thus create some noises…<br>In next experiments, inspired by Florian’s approach, I will try to modify the MinimumImageDimension function so as to limit the maximum Image dimension.</p>
@@ -166,6 +167,8 @@ mlp_hiddens = [1000]
 output_size = 2
 weights_init=Uniform(width=0.2)
 step_rule=Scale(learning_rate=0.1)
+Max_image_dim_limit_method = RandomFixedSizeCrop
+Dataset_processing = rescale to 128*128
 </code></pre><p>The result is after 100 epochs is that training error=26.31%, validation error= 25.77%</p>
 <p>I still have some difficulty to plot the learning curves because of the Bokeh live plot problem, it always prompts me that it cannot import curstate module….</p>
 <p>I tried to unpackage the pickled log file but pickle also throws error:<br>AttributeError : Unpickler instance has no attibute ‘persistent_load’. I’m trying to fix it and for the moment I have to post just a snapshot of the console snapshot.</p>

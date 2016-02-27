@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Blog IFT6266 H16">
 <meta property="og:description" content="Hi,I’ve tried another time the same configuration as in experiment 1, still with random initialization of the weights, just to add the Bokeh plotting, but the results seems to be worse than experiment">
 <meta property="og:image" content="http://yoursite.com/image/main11.png">
-<meta property="og:updated_time" content="2016-02-27T19:10:36.000Z">
+<meta property="og:updated_time" content="2016-02-27T19:14:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cats and Dogs 1.01">
 <meta name="twitter:description" content="Hi,I’ve tried another time the same configuration as in experiment 1, still with random initialization of the weights, just to add the Bokeh plotting, but the results seems to be worse than experiment">
@@ -108,6 +108,7 @@ output_size = 2
 weights_init=Uniform(width=0.2)
 step_rule=Scale(learning_rate=0.1)
 max_image_dim_limit_method= random crop
+dataset_processing = rescale to 128*128
 </code></pre><p>The result is after 100 epochs is that training error=35%, validation error= 35%</p>
 <p><img src="/image/main11.png" alt="cats and dogs 1 result"></p>
 <p>I kind of understand why the learning is kind of slow and why there’s no overfitting phenomen in 1.0 and 1.01 because I used RandomFixedSizeCrop to limit the max size of image to 128*128. This might crop the unimportant area area and label it as cats/dogs thus create some noises…<br>In next experiments, inspired by Florian’s approach, I will try to modify the MinimumImageDimension function so as to limit the maximum Image dimension.</p>
