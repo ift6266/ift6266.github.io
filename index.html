@@ -77,6 +77,74 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/02/28/cats1.3/" title="Cats and Dogs 1.3 (3 Conv layer architecture) with rotated image to regularize, validation error 19.4%" itemprop="url">Cats and Dogs 1.3 (3 Conv layer architecture) with rotated image to regularize, validation error 19.4%</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Yifan Nie" target="_blank" itemprop="author">Yifan Nie</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-28T23:24:51.000Z" itemprop="datePublished"> Published 2016-02-28</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>Hi,<br>As mentioned in Blog posts 1.2, simply using the cropped image and limit their size to 128*128 doesn’t help a lot, and we can observe from experiment 1.2 that only use cropped original images to do learning will result in overfitting, and as we can observe from the learning curve in experiment 1.2, after about 700 epochs, overfitting already occurred, the valid_error will stagnate at around 27%, and the training error will continues to decrease to about 5%, but that isn’t of any use…</p>
+<p>So in order to overcome the overfitting phenomenon, there are a lot of methods to regularize, in this experiment 1.3, I uses the Random2DRotation Method to rotate each training image by a random degree, and keep their label untouched, so the model will learn different dogs or cats’images with different random rotated angles, and as we can see from the learning curve of experiment 1.3, this does help to reduce the overfitting. Globally, the training error and validation error curves are sticked together, and the validation error after 100 epochs is 19.4%. </p>
+<p>In this experiment, I’m using the same 3-convolution layered CNN architecture as in 1, 1.01, 1.1, 1.2<br>The configurations are as follows:</p>
+<pre><code>num_epochs= 100 
+image_shape = (128,128)
+filter_sizes = [(5,5),(5,5),(5,5)]
+feature_maps = [20,50,80]
+pooling_sizes = [(2,2),(2,2),(2,2)]
+mlp_hiddens = [1000]
+output_size = 2
+weights_init=Uniform(width=0.2)
+step_rule=Adam()
+max_image_dim_limit_method= MaximumImageDimension
+dataset_processing = rescale to 128*128
+</code></pre><p><img src="/image/cats1.3.png" alt="cats and dogs 1 result"></p>
+<p>Next step I will try more complicated architectures (e.g. more layers) and with more feature maps at last conv layer to see if it can provide more information to the last MLP-softmax classification layer. And it might  also be worthwhile to try other data augmentation schemes to regularize.</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/02/28/cats1.3/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/02/27/cats1.2/" title="Cats and Dogs 1.2" itemprop="url">Cats and Dogs 1.2</a>
   </h1>
   <p class="article-author">By
@@ -125,74 +193,6 @@ dataset_processing = rescale to 128*128
 	
 	  	<span></span>
 		<a href="/2016/02/27/cats1.2/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/02/27/cats1.3/" title="Cats and Dogs 1.3 (3 Conv layer architecture) with rotated image to regularize, validation error 19.4%" itemprop="url">Cats and Dogs 1.3 (3 Conv layer architecture) with rotated image to regularize, validation error 19.4%</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Yifan Nie" target="_blank" itemprop="author">Yifan Nie</a>
-		
-  <p class="article-time">
-    <time datetime="2016-02-27T21:24:51.000Z" itemprop="datePublished"> Published 2016-02-27</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>Hi,<br>As mentioned in Blog posts 1.2, simply using the cropped image and limit their size to 128*128 doesn’t help a lot, and we can observe from experiment 1.2 that only use cropped original images to do learning will result in overfitting, and as we can observe from the learning curve in experiment 1.2, after about 700 epochs, overfitting already occurred, the valid_error will stagnate at around 27%, and the training error will continues to decrease to about 5%, but that isn’t of any use…</p>
-<p>So in order to overcome the overfitting phenomenon, there are a lot of methods to regularize, in this experiment 1.3, I uses the Random2DRotation Method to rotate each training image by a random degree, and keep their label untouched, so the model will learn different dogs or cats’images with different random rotated angles, and as we can see from the learning curve of experiment 1.3, this does help to reduce the overfitting. Globally, the training error and validation error curves are sticked together, and the validation error after 100 epochs is 19.4%. </p>
-<p>In this experiment, I’m using the same 3-convolution layered CNN architecture as in 1, 1.01, 1.1, 1.2<br>The configurations are as follows:</p>
-<pre><code>num_epochs= 100 
-image_shape = (128,128)
-filter_sizes = [(5,5),(5,5),(5,5)]
-feature_maps = [20,50,80]
-pooling_sizes = [(2,2),(2,2),(2,2)]
-mlp_hiddens = [1000]
-output_size = 2
-weights_init=Uniform(width=0.2)
-step_rule=Adam()
-max_image_dim_limit_method= MaximumImageDimension
-dataset_processing = rescale to 128*128
-</code></pre><p><img src="/image/cats1.3.png" alt="cats and dogs 1 result"></p>
-<p>Next step I will try more complicated architectures (e.g. more layers) and with more feature maps at last conv layer to see if it can provide more information to the last MLP-softmax classification layer. And it might  also be worthwhile to try other data augmentation schemes to regularize.</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/02/27/cats1.3/#disqus_thread" class="comments-count-link">Comments</a>
 	
 </div>
 
