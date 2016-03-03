@@ -77,6 +77,150 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/01/17/add latex/" title="Writing latex formulas with markdown language in Hexo" itemprop="url">Writing latex formulas with markdown language in Hexo</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Yifan Nie" target="_blank" itemprop="author">Yifan Nie</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-18T04:09:51.000Z" itemprop="datePublished"> Published 2016-01-17</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>How to write a lot of math formulas in your blog with markdown language?<br>This is a simple solution: using MathJax Library<br>It’s a open source javascript library, which doesn’t transform a formula into image, but using javascript to print that formula on the webpage. You can either download the js library which cost about 130M space, you can also use their CDN, so you won’t need upload the library on your web space.</p>
+<p>For Hexo user, just append the following code in your themes/jacman/layout/_partial/after_footer.ejs file</p>
+<pre><code>&lt;script type=&quot;text/x-mathjax-config&quot;&gt; 
+MathJax.Hub.Config({ 
+tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]} 
+}); 
+&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;
+src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;
+&lt;/script&gt;
+</code></pre><p>Let’s have a test<br>$a_1$</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/01/17/add latex/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/01/17/building website/" title="How to build your own blog using Hexo tool" itemprop="url">How to build your own blog using Hexo tool</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Yifan Nie" target="_blank" itemprop="author">Yifan Nie</a>
+		
+  <p class="article-time">
+    <time datetime="2016-01-18T04:09:51.000Z" itemprop="datePublished"> Published 2016-01-17</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>Hi there,<br>This is a tech memo to show how to build your own blog using a website generating tool called Hexo.<br>You only have to configure the config file and the tool will automatically generate the html, css files for you. Then, you can upload your website to the Internet.</p>
+<p>First, you should download the required software: </p>
+<ol>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a></li>
+<li><a href="https://git-scm.com/download/" target="_blank" rel="external">Git</a></li>
+<li><a href="https://hexo.io" target="_blank" rel="external">Hexo</a></li>
+</ol>
+<p>Thoses 3 pieces of software provide both multi platform support such as linux, windows, mac…<br>Installation of the Node.js and Git software should be straight forward, since they provide a GUI installer.</p>
+<p>Then you should install Hexo tool (the web generating tool) through the git command line. In mac or linux it is integrated into your terminal (Shell), and in windows it will install a Git Bash and you should click open that terminal.</p>
+<p>When you have opened a terminal, you can just type the following command to install npm through git：</p>
+<pre><code>$ npm install hexo-cli -g
+$ npm install hexo --save
+</code></pre><p>Then you can cd into the folder that you intend to put website files and execute</p>
+<pre><code>$ hexo init
+$ npm install
+</code></pre><p>And then you can install the Hexo plug-ins</p>
+<pre><code>npm install hexo-generator-index --save
+npm install hexo-generator-archive --save
+npm install hexo-generator-category --save
+npm install hexo-generator-tag --save
+npm install hexo-server --save
+npm install hexo-deployer-git --save
+npm install hexo-deployer-heroku --save
+npm install hexo-deployer-rsync --save
+npm install hexo-deployer-openshift --save
+npm install hexo-renderer-marked@0.2 --save
+npm install hexo-renderer-stylus@0.2 --save
+npm install hexo-generator-feed@1 --save
+npm install hexo-generator-sitemap@1 --save
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/01/17/building website/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/01/16/blog built/" title="Blog Built" itemprop="url">Blog Built</a>
   </h1>
   <p class="article-author">By
