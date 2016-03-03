@@ -19,7 +19,8 @@ So in order to overcome the">
 <meta property="og:site_name" content="Blog IFT6266 H16">
 <meta property="og:description" content="Hi,As mentioned in Blog posts 1.3, I will try some deeper achitectures, so in this experiment 2.01 I tried to use a 5 layered CNN, and the configuration is showed as below.
 So in order to overcome the">
-<meta property="og:updated_time" content="2016-03-03T15:06:07.000Z">
+<meta property="og:image" content="http://yoursite.com/image/cats2.01.png">
+<meta property="og:updated_time" content="2016-03-03T15:32:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cats and Dogs 2.01 (5 Conv layer architecture) with rotatation , validation error 19.6%">
 <meta name="twitter:description" content="Hi,As mentioned in Blog posts 1.3, I will try some deeper achitectures, so in this experiment 2.01 I tried to use a 5 layered CNN, and the configuration is showed as below.
@@ -113,10 +114,8 @@ weights_init=Uniform(width=0.2)
 step_rule=Adam()
 max_image_dim_limit_method= MaximumImageDimension
 dataset_processing = rescale to 256*256
-
-
-![cats and dogs 2 result](/image/cats2.01.png)
-</code></pre><p>But it seems a little bit strange because the validation error still stagnate at around 19.6%, should I train more epochs, or should I do other things to change the architecture, the processing of the images? </p>
+</code></pre><p><img src="/image/cats2.01.png" alt="cats and dogs 2 result"></p>
+<p>But it seems a little bit strange because the validation error still stagnate at around 19.6%, should I train more epochs, or should I do other things to change the architecture, the processing of the images? </p>
 <p>Next step I will try add a 6th conv layer and more feature maps at last conv layer to see if it can provide more information to the last MLP-softmax classification layer. And it might  also be worthwhile to try other data augmentation schemes to regularize.</p>
   
 	</div>
