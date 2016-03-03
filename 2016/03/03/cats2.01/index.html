@@ -20,7 +20,7 @@ So in order to overcome the">
 <meta property="og:description" content="Hi,As mentioned in Blog posts 1.3, I will try some deeper achitectures, so in this experiment 2.01 I tried to use a 5 layered CNN, and the configuration is showed as below.
 So in order to overcome the">
 <meta property="og:image" content="http://yoursite.com/image/cats2.01.png">
-<meta property="og:updated_time" content="2016-03-03T14:54:02.000Z">
+<meta property="og:updated_time" content="2016-03-03T15:00:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cats and Dogs 2.01 (5 Conv layer architecture) with rotatation , validation error 19.6%">
 <meta name="twitter:description" content="Hi,As mentioned in Blog posts 1.3, I will try some deeper achitectures, so in this experiment 2.01 I tried to use a 5 layered CNN, and the configuration is showed as below.
@@ -102,7 +102,7 @@ So in order to overcome the">
 		
 		<p>Hi,<br>As mentioned in Blog posts 1.3, I will try some deeper achitectures, so in this experiment 2.01 I tried to use a 5 layered CNN, and the configuration is showed as below.</p>
 <p>So in order to overcome the overfitting phenomenon, there are a lot of methods to regularize, in this experiment 2.01, I still use the Random2DRotation Method to rotate each training image by a random degree, and keep their label untouched, so the model will learn different dogs or cats’images with different random rotated angles, and as we can see from the learning curve of experiment 2.01, this does help to reduce the overfitting. Globally, the training error and validation error curves are sticked together, and the validation error after 100 epochs is 19.6%. </p>
-<p>In this experiment, I’m using the same 5-convolution layered CNN architecture as in 1, 1.01, 1.1, 1.2<br>The configurations are as follows:</p>
+<p>In this experiment, I’m using the same 5-convolution layered CNN architecture.<br>The configurations are as follows:</p>
 <pre><code>num_epochs= 100 
 image_shape = (128,128)
 filter_sizes = [(5,5),(5,5),(5,5),(5,5),(5,5)]
@@ -142,6 +142,14 @@ dataset_processing = rescale to 256*256
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2016/03/03/cats2.1/" title="Cats and Dogs 1.3 (3 Conv layer architecture) with rotated image to regularize, validation error 19.4%">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Cats and Dogs 1.3 (3 Conv layer architecture) with rotated image to regularize, validation error 19.4%</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2016/02/28/cats1.3/"  title="Cats and Dogs 1.3 (3 Conv layer architecture) with rotated image to regularize, validation error 19.4%">
