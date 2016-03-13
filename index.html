@@ -77,6 +77,77 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/03/13/cats2.2/" title="Cats and Dogs 2.2 (6 Conv layer architecture) with rotation, valid_error 8.56%, choice of leanring rate is important" itemprop="url">Cats and Dogs 2.2 (6 Conv layer architecture) with rotation, valid_error 8.56%, choice of leanring rate is important</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Yifan Nie" target="_blank" itemprop="author">Yifan Nie</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-13T13:24:51.000Z" itemprop="datePublished"> Published 2016-03-13</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>Hi,<br>As mentioned in Blog posts 2.1, this time, I tried to use a 6 layered CNN to conduct experiment, I tried to reduce the filter sizes of the last 3 layers to (4,4), and still keep other configurations unchanged.</p>
+<p>In this experiment 2.2, I still use the Random2DRotation Method to rotate each training image by a random degree, and keep their label untouched, to do regularization, so the model will learn different dogs or cats’images with different random rotated angles. However this time, I tried to set the initial learning rate for Adam() as 0.0005, rather than using its default values.</p>
+<p>As we learned from course, initial learning rate is very important, if it is set big, the optimization will oscillate, and if it is set too big, the optimization process will diverge, it is linked with the inverse of the biggest eigenvalue of the Hessian of the cost function. However if the learning rate is chosen to be too small, the learning will be very slow, and here, as we are using Adam() to decay the learning rate as time elapses, at the end stage the learning rate will be very small can the learning cannot go on effectively.</p>
+<p>Also, the initial learning rate setting is important, because at the begining, we want to get down as fast as possible, so we cannot set too conservatively small learning rate. I’ve tried with trial and errors and concluded that 0.004 was too big, and the default 0.0002 is too small, this time I tried with 0.0005. It seemed work better!</p>
+<p>In this experiment, I’m using a 6-convolution layered CNN architecture.<br>The configurations are as follows:</p>
+<pre><code>num_epochs= 61 (at the time of posting this blog)
+batch_size=64
+image_shape = (256,256)
+filter_sizes = [(5,5),(5,5),(5,5),(5,5),(5,5),(5,5)]
+feature_maps = [20,40,60,80,100, 120]
+pooling_sizes = [(2,2),(2,2),(2,2)]
+mlp_hiddens = [1000]
+output_size = 2
+weights_init=Uniform(width=0.2)
+step_rule=Adam(learning_rate=0.0005)
+max_image_dim_limit_method= MaximumImageDimension
+dataset_processing = rescale to 256*256
+</code></pre><p>Validation error=8.56% after 61 epochs</p>
+<p><img src="/image/cats2.2.png" alt="cats and dogs 2 result"></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/03/13/cats2.2/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/03/03/cats2.1/" title="Cats and Dogs 2.1 (6 Conv layer architecture) with rotation" itemprop="url">Cats and Dogs 2.1 (6 Conv layer architecture) with rotation</a>
   </h1>
   <p class="article-author">By
@@ -682,103 +753,6 @@ $ python
 	
 	  	<span></span>
 		<a href="/2016/02/19/install_theano/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/02/15/install_anaconda_remote/" title="Installing Anaconda on the remote Hades machine" itemprop="url">Installing Anaconda on the remote Hades machine</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Yifan Nie" target="_blank" itemprop="author">Yifan Nie</a>
-		
-  <p class="article-time">
-    <time datetime="2016-02-16T01:04:51.000Z" itemprop="datePublished"> Published 2016-02-15</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>Hello,<br>Here is a memo to show how to install anaconda (integreted package of numpy, scipy, matplotlib,…etc…) on the Hades remote machine.<br>As you know, anaconda is an integrated package containing a lot of useful packages such as numpy, matplotlib etc… so you don’t have to install them one by one. Another benefit is that we can easily install a version of MKL blas library, if installed seperately, that will cause a lot of time and may be imcompatible.</p>
-<p>Because we are using the remote machine, we are only a normal user and don’t have sudo prililege. So there are several ways to install it to our user’s directory.</p>
-<p>One easist way is to download the compiled anaconda installer for linux anaconda-2.5.0-x86_64.sh from the anaconda’s repo. And then upload it to the remote machine’s storage, and then install it directly on the remote machine</p>
-<p><a href="https://repo.continuum.io/archive/index.html" target="_blank" rel="external">anaconda repo</a></p>
-<p>You can choose a version that best suits your OS and your need (python2 or python3), download it to your local machine and then upload it to the remote machine.</p>
-<p>Another easier way is to download it directly from your remote machine:</p>
-<p>1.first log on to the remote machine by ssh by typing:</p>
-<pre><code>$ ssh username@hades.calculquebec.ca
-$ #type your password
-</code></pre><ol>
-<li><p>using wget command to download the anaconda package directly from your remote machine    </p>
-<p> $ wget <a href="https://repo.continuum.io/archive/Anaconda2-2.5.0-Linux-x86_64.sh" target="_blank" rel="external">https://repo.continuum.io/archive/Anaconda2-2.5.0-Linux-x86_64.sh</a></p>
-</li>
-</ol>
-<p>This command will download the installer file from the repo direcly to your remote machine.</p>
-<ol>
-<li><p>install the anaconda on the remote machine by executing it:</p>
-<p> $ bash Anaconda2-2.5.0-Linux-x86_64.sh</p>
-</li>
-</ol>
-<p>And then just follow the text instructions, always type yes or y to agreee with the license agreements…Then it will install, you can see the installation progress.</p>
-<ol>
-<li><p>update the environment variable and make that take effect immediately</p>
-<p> $ source .bashrc</p>
-</li>
-</ol>
-<p>5.And when this anaconda is installed , you’d better to install intel’s MKL Blas library, this will help better linear algebra calculations. </p>
-<pre><code>$ conda install mkl
-</code></pre><ol>
-<li><p>Finally you can check if the MKL Blas library is correctly installed</p>
-<p> $ python</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> nunmpy <span class="keyword">as</span> np</span><br><span class="line">np.__config__.show()</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>If there’s something MKL in the BLAS info, you are done.</p>
-<p>Trouble shooting:<br>Sometimes, with olders anaconda versions (such as 2.4.1), the MKL will give warning saying the license will expire in xxx days, actually it’s already free now. You can repair by either install anaconda 2.5.0 (newer anaconda has already fixed it) or fix older installed version by:</p>
-<p>set your installation to use the mkl-linked libraries that do not require a license</p>
-<pre><code>$conda remove mkl-rt
-$conda install -f mkl
-
-run conda install with the specific packages you choose or with all of Anaconda:
-$conda install numpy scipy scikit-learn numexpr
-
-or update the whole anaconda to 2.5 or newer
-$conda install anaconda=2.5
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/02/15/install_anaconda_remote/#disqus_thread" class="comments-count-link">Comments</a>
 	
 </div>
 

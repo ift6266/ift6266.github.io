@@ -77,6 +77,103 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/02/15/install_anaconda_remote/" title="Installing Anaconda on the remote Hades machine" itemprop="url">Installing Anaconda on the remote Hades machine</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Yifan Nie" target="_blank" itemprop="author">Yifan Nie</a>
+		
+  <p class="article-time">
+    <time datetime="2016-02-16T01:04:51.000Z" itemprop="datePublished"> Published 2016-02-15</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>Hello,<br>Here is a memo to show how to install anaconda (integreted package of numpy, scipy, matplotlib,…etc…) on the Hades remote machine.<br>As you know, anaconda is an integrated package containing a lot of useful packages such as numpy, matplotlib etc… so you don’t have to install them one by one. Another benefit is that we can easily install a version of MKL blas library, if installed seperately, that will cause a lot of time and may be imcompatible.</p>
+<p>Because we are using the remote machine, we are only a normal user and don’t have sudo prililege. So there are several ways to install it to our user’s directory.</p>
+<p>One easist way is to download the compiled anaconda installer for linux anaconda-2.5.0-x86_64.sh from the anaconda’s repo. And then upload it to the remote machine’s storage, and then install it directly on the remote machine</p>
+<p><a href="https://repo.continuum.io/archive/index.html" target="_blank" rel="external">anaconda repo</a></p>
+<p>You can choose a version that best suits your OS and your need (python2 or python3), download it to your local machine and then upload it to the remote machine.</p>
+<p>Another easier way is to download it directly from your remote machine:</p>
+<p>1.first log on to the remote machine by ssh by typing:</p>
+<pre><code>$ ssh username@hades.calculquebec.ca
+$ #type your password
+</code></pre><ol>
+<li><p>using wget command to download the anaconda package directly from your remote machine    </p>
+<p> $ wget <a href="https://repo.continuum.io/archive/Anaconda2-2.5.0-Linux-x86_64.sh" target="_blank" rel="external">https://repo.continuum.io/archive/Anaconda2-2.5.0-Linux-x86_64.sh</a></p>
+</li>
+</ol>
+<p>This command will download the installer file from the repo direcly to your remote machine.</p>
+<ol>
+<li><p>install the anaconda on the remote machine by executing it:</p>
+<p> $ bash Anaconda2-2.5.0-Linux-x86_64.sh</p>
+</li>
+</ol>
+<p>And then just follow the text instructions, always type yes or y to agreee with the license agreements…Then it will install, you can see the installation progress.</p>
+<ol>
+<li><p>update the environment variable and make that take effect immediately</p>
+<p> $ source .bashrc</p>
+</li>
+</ol>
+<p>5.And when this anaconda is installed , you’d better to install intel’s MKL Blas library, this will help better linear algebra calculations. </p>
+<pre><code>$ conda install mkl
+</code></pre><ol>
+<li><p>Finally you can check if the MKL Blas library is correctly installed</p>
+<p> $ python</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> nunmpy <span class="keyword">as</span> np</span><br><span class="line">np.__config__.show()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>If there’s something MKL in the BLAS info, you are done.</p>
+<p>Trouble shooting:<br>Sometimes, with olders anaconda versions (such as 2.4.1), the MKL will give warning saying the license will expire in xxx days, actually it’s already free now. You can repair by either install anaconda 2.5.0 (newer anaconda has already fixed it) or fix older installed version by:</p>
+<p>set your installation to use the mkl-linked libraries that do not require a license</p>
+<pre><code>$conda remove mkl-rt
+$conda install -f mkl
+
+run conda install with the specific packages you choose or with all of Anaconda:
+$conda install numpy scipy scikit-learn numexpr
+
+or update the whole anaconda to 2.5 or newer
+$conda install anaconda=2.5
+</code></pre>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/02/15/install_anaconda_remote/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/01/17/add latex/" title="Writing latex formulas with markdown language in Hexo" itemprop="url">Writing latex formulas with markdown language in Hexo</a>
   </h1>
   <p class="article-author">By
