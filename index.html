@@ -108,7 +108,7 @@ step_rule=Adam(learning_rate=0.0005)
 max_image_dim_limit_method= MaximumImageDimension
 dataset_processing = rescale to 256*256
 </code></pre><p>Validation error=8.56% after 61 epochs</p>
-<p><img src="/image/cats2.2.png" alt="cats and dogs 2 result"></p>
+<p><img src="/image/2.2.png" alt="cats and dogs 2 result"></p>
 
         
         
@@ -175,7 +175,7 @@ weights_init=Uniform(width=0.2)
 step_rule=Adam()
 max_image_dim_limit_method= MaximumImageDimension
 dataset_processing = rescale to 256*256
-</code></pre><p><img src="/image/cats2.1.png" alt="cats and dogs 2 result"></p>
+</code></pre><p><img src="/image/2.1.png" alt="cats and dogs 2 result"></p>
 
         
         
@@ -242,7 +242,7 @@ weights_init=Uniform(width=0.2)
 step_rule=Adam()
 max_image_dim_limit_method= MaximumImageDimension
 dataset_processing = rescale to 256*256
-</code></pre><p><img src="/image/cats2.01.png" alt="cats and dogs 2 result"></p>
+</code></pre><p><img src="/image/2.01.png" alt="cats and dogs 2 result"></p>
 <p>But it seems a little bit strange because the validation error still stagnate at around 19.6%, should I train more epochs, or should I do other things to change the architecture, the processing of the images? </p>
 <p>Next step I will try add a 6th conv layer and more feature maps at last conv layer to see if it can provide more information to the last MLP-softmax classification layer. And it might  also be worthwhile to try other data augmentation schemes to regularize.</p>
 
