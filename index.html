@@ -77,6 +77,79 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2016/03/20/cats2.3/" title="Cats and Dogs 2.3 (6 Conv layer architecture) with rotation, valid_error 8.32%" itemprop="url">Cats and Dogs 2.3 (6 Conv layer architecture) with rotation, valid_error 8.32%</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Yifan Nie" target="_blank" itemprop="author">Yifan Nie</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-20T13:28:52.000Z" itemprop="datePublished"> Published 2016-03-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>Hi,<br>As mentioned in Blog posts 2.2, this time, I tried to use a 6 layered CNN to conduct experiment, but with more feature maps at each layer, and at the last convolutional layer, there are 512 feature maps. More features maps might help the last MLP to better discriminate the image. </p>
+<p>In this experiment 2.2, I still use the Random2DRotation Method to rotate each training image by a random degree, and keep their label untouched, to do regularization, so the model will learn different dogs or cats’images with different random rotated angles. However this time, I tried to set the initial learning rate for Adam() as 0.0005, rather than using its default values.</p>
+<p>As we learned from course, initial learning rate is very important, if it is set big, the optimization will oscillate, and if it is set too big, the optimization process will diverge, it is linked with the inverse of the biggest eigenvalue of the Hessian of the cost function. However if the learning rate is chosen to be too small, the learning will be very slow, and here, as we are using Adam() to decay the learning rate as time elapses, at the end stage the learning rate will be very small can the learning cannot go on effectively.</p>
+<p>And as tried in last experiment 2.2, I still use a learning rate of 0.0005 which seems to work well for this 6 layered architecture.</p>
+<p>In this experiment, I’m using a 6-convolution layered CNN architecture.</p>
+<p>The configurations are as follows:</p>
+<pre><code>num_epochs= 63 (at the time of posting this blog)
+batch_size=64
+image_shape = (256,256)
+filter_sizes = [(5,5),(5,5),(5,5),(5,5),(5,5),(5,5)]
+feature_maps = [20,40,70,140,256, 512]
+pooling_sizes = [(2,2),(2,2),(2,2),(2,2),(2,2),(2,2)]
+mlp_hiddens = [1000]
+output_size = 2
+weights_init=Uniform(width=0.2)
+step_rule=Adam(learning_rate=0.0005)
+max_image_dim_limit_method= MaximumImageDimension
+dataset_processing = rescale to 256*256
+</code></pre><p>Validation error=8.32% after 63 epochs</p>
+<p>However we can see that at 63 epochs the validation error is only a little bit lower than the 8.5% of the last experiment which has 120 feature maps at the last layer, so the enhencement caused by adding feature maps seems not that much. It is worthwile to try other regularization techniques or better optimization method to help furthur improve performance in the next experiment.</p>
+<p><img src="/image/2.3.png" alt="cats and dogs 2 result"></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/03/20/cats2.3/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/03/13/cats2.2/" title="Cats and Dogs 2.2 (6 Conv layer architecture) with rotation, valid_error 8.56%, choice of leanring rate is important" itemprop="url">Cats and Dogs 2.2 (6 Conv layer architecture) with rotation, valid_error 8.56%, choice of leanring rate is important</a>
   </h1>
   <p class="article-author">By
@@ -99,8 +172,8 @@
 batch_size=64
 image_shape = (256,256)
 filter_sizes = [(5,5),(5,5),(5,5),(5,5),(5,5),(5,5)]
-feature_maps = [20,40,60,80,100, 120]
-pooling_sizes = [(2,2),(2,2),(2,2)]
+feature_maps = [20,40,60,80,100,120]
+pooling_sizes = [(2,2),(2,2),(2,2),(2,2),(2,2),(2,2)]
 mlp_hiddens = [1000]
 output_size = 2
 weights_init=Uniform(width=0.2)
@@ -672,87 +745,6 @@ Dataset_processing = rescale to 128*128
 	
 	  	<span></span>
 		<a href="/2016/02/26/cats1.0/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/02/19/install_theano/" title="Installing Theano and configure the GPU" itemprop="url">Installing Theano and configure the GPU</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Yifan Nie" target="_blank" itemprop="author">Yifan Nie</a>
-		
-  <p class="article-time">
-    <time datetime="2016-02-20T01:04:51.000Z" itemprop="datePublished"> Published 2016-02-19</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>Hello,<br>Here is a memo to show how to install the theano deep learning package on the Hades remote machine or on local machine. </p>
-<p>It’s very easy to use  git to “clone” a copy of installation files onto the remote machine or on your own local machine.</p>
-<p>But if you don’t have git installed on the remote machine or local machine, please first do:</p>
-<pre><code>$ sudo apt-get install git-all
-</code></pre><p>If you already have git installed you can do the following to clone a copy of the theano package to your machine:</p>
-<pre><code>$ git clone https://github.com/Theano/Theano
-</code></pre><p>This will download the theano package into your home directory</p>
-<p>Then you can just install it by typing the commands:<br>Be careful, if your numpy,…ect are installed with anaconda python, you should make sure that your python command (interpreter) here is anaconda’s, and the anaconda should be installed with your user prililege not root. You can veryfy by typing from home:</p>
-<pre><code>$ ls -lr
-</code></pre><p>to see if the anaconda direcory’s owner is you.</p>
-<p>Then cd to the Theano directory to install:</p>
-<pre><code>$ cd ~/Theano
-$ python setip.py develop
-</code></pre><p>The installation should be fast and straightforward.</p>
-<p>Then you should configure the Theano to make use of your GPU</p>
-<p>You can just create a config file named .theanorc</p>
-<p>to your home dir that is ~/.theanorc:</p>
-<pre><code><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">[cuda]</span></span><br><span class="line"><span class="setting">root = <span class="value">/usr/local/cuda-<span class="number">7.5</span></span></span></span><br><span class="line"><span class="title">[global]</span></span><br><span class="line"><span class="setting">floatX = <span class="value">float32</span></span></span><br><span class="line"><span class="setting">device = <span class="value">gpu0</span></span></span><br><span class="line"><span class="title">[nvcc]</span></span><br><span class="line"><span class="setting">fastmath = <span class="value"><span class="keyword">True</span></span></span></span><br></pre></td></tr></table></figure>
-</code></pre><p>If you don’t like to create this config file you can also create a environment variable called $CUDA_ROOT<br>    by </p>
-<pre><code>$ export CUDA_ROOT = /usr/local/cuda-7.5:$CUDA_ROOT
-$ source ~/.bashrc
-
-Then you can test by login to python interpreter
-
-$ python
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> theano</span><br></pre></td></tr></table></figure>
-</code></pre><p>If the GPU is properly configured, there will be info about your GPU printed on the screen.</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2016/02/19/install_theano/#disqus_thread" class="comments-count-link">Comments</a>
 	
 </div>
 
