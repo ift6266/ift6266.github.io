@@ -11,17 +11,20 @@
     
 
     
-    <meta name="description" content="IntroductionThis semestre’s course has come to an end. And in this course, I choose to do the project of cats and dogs. The goal of this project is to classify images of cats and dogs using the CNN ar">
+    <meta name="description" content="Introduction
+This semestre’s course has come to an end. And in this course, I choose to do the project of cats and dogs. The goal of this project is to classify images of cats and dogs using the CNN a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cats and Dogs - Summary for the course project">
 <meta property="og:url" content="http://yoursite.com/2016/04/15/cats_summary/index.html">
 <meta property="og:site_name" content="Blog IFT6266 H16">
-<meta property="og:description" content="IntroductionThis semestre’s course has come to an end. And in this course, I choose to do the project of cats and dogs. The goal of this project is to classify images of cats and dogs using the CNN ar">
-<meta property="og:image" content="http://yoursite.com/image/2.3.png">
-<meta property="og:updated_time" content="2016-04-16T18:43:39.000Z">
+<meta property="og:description" content="Introduction
+This semestre’s course has come to an end. And in this course, I choose to do the project of cats and dogs. The goal of this project is to classify images of cats and dogs using the CNN a">
+<meta property="og:image" content="http://yoursite.com/image/CNN.png">
+<meta property="og:updated_time" content="2016-04-16T19:41:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cats and Dogs - Summary for the course project">
-<meta name="twitter:description" content="IntroductionThis semestre’s course has come to an end. And in this course, I choose to do the project of cats and dogs. The goal of this project is to classify images of cats and dogs using the CNN ar">
+<meta name="twitter:description" content="Introduction
+This semestre’s course has come to an end. And in this course, I choose to do the project of cats and dogs. The goal of this project is to classify images of cats and dogs using the CNN a">
 
     
     <link rel="alternative" href="/atom.xml" title="Blog IFT6266 H16" type="application/atom+xml">
@@ -97,29 +100,13 @@
 		
 		</div>
 		
-		<p>Introduction<br>This semestre’s course has come to an end. And in this course, I choose to do the project of cats and dogs. The goal of this project is to classify images of cats and dogs using the CNN architecture learned in course.</p>
-<p>More specifically, given an image $X$</p>
-<p>As mentioned in Blog posts 2.2, this time, I tried to use a 6 layered CNN to conduct experiment, but with more feature maps at each layer, and at the last convolutional layer, there are 512 feature maps. More features maps might help the last MLP to better discriminate the image. </p>
-<p>In this experiment 2.3, I still use the Random2DRotation Method to rotate each training image by a random degree, and keep their label untouched, to do regularization, so the model will learn different dogs or cats’images with different random rotated angles. However this time, I tried to set the initial learning rate for Adam() as 0.0005, rather than using its default values.</p>
-<p>As we learned from course, initial learning rate is very important, if it is set big, the optimization will oscillate, and if it is set too big, the optimization process will diverge, it is linked with the inverse of the biggest eigenvalue of the Hessian of the cost function. However if the learning rate is chosen to be too small, the learning will be very slow, and here, as we are using Adam() to decay the learning rate as time elapses, at the end stage the learning rate will be very small can the learning cannot go on effectively.</p>
-<p>And as tried in last experiment 2.2, I still use a learning rate of 0.0005 which seems to work well for this 6 layered architecture.</p>
-<p>In this experiment, I’m using a 6-convolution layered CNN architecture.</p>
-<p>The configurations are as follows:</p>
-<pre><code>num_epochs= 63 (at the time of posting this blog)
-batch_size=64
-image_shape = (256,256)
-filter_sizes = [(5,5),(5,5),(5,5),(5,5),(5,5),(5,5)]
-feature_maps = [20,40,70,140,256, 512]
-pooling_sizes = [(2,2),(2,2),(2,2),(2,2),(2,2),(2,2)]
-mlp_hiddens = [1000]
-output_size = 2
-weights_init=Uniform(width=0.2)
-step_rule=Adam(learning_rate=0.0005)
-max_image_dim_limit_method= MaximumImageDimension
-dataset_processing = rescale to 256*256
-</code></pre><p>Validation error=8.32% after 63 epochs.</p>
-<p>However we can see that at 63 epochs the validation error is only a little bit lower than the 8.5% of the last experiment which has 120 feature maps at the last layer, so the enhencement caused by adding feature maps seems not that much. It is worthwile to try other regularization techniques or better optimization method to help furthur improve performance in the next experiment.</p>
-<p><img src="/image/2.3.png" alt="cats and dogs 2 result"></p>
+		<p>Introduction</p>
+<p>This semestre’s course has come to an end. And in this course, I choose to do the project of cats and dogs. The goal of this project is to classify images of cats and dogs using the CNN architecture learned in course.</p>
+<p>More specifically, given an image $X$, we have to use a trained CNN $f$ to calculate a prediction $y=f(x)$. This is a binary classification task, so the the label will be 0 for cat and 1 for dog.</p>
+<p>Actually the images provided by kaggle can be quite difficult because there are backgrounds and other confusing visual part which will disturb and confuse the discriminative classification model’s classification ability. Also, some examples of cats and dogs’ faces look really similar, so we need to use a CNN to conduct feature learning and use the extracted feature to do classifications (typically by adding a MLP on top of last convolution-pooling layer). CNN is considered to be quite efficient to do image-based classification because it used local connections which dramatically reduced the number of parameters making the network easier to train, and it used weight sharing to extract many feature maps which will help better discimiate the image.</p>
+<p>A typical CNN architecture is shown in Fig 1.</p>
+<p><img src="/image/CNN.png" alt="Fig. 1 A Typical CNN Architecture"></p>
+<p>Experiment</p>
   
 	</div>
 		<footer class="article-footer clearfix">
