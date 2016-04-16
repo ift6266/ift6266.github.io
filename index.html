@@ -96,7 +96,21 @@
 <p>Actually the images provided by kaggle can be quite difficult because there are backgrounds and other confusing visual part which will disturb and confuse the discriminative classification model’s classification ability. Also, some examples of cats and dogs’ faces look really similar, so we need to use a CNN to conduct feature learning and use the extracted feature to do classifications (typically by adding a MLP on top of last convolution-pooling layer). CNN is considered to be quite efficient to do image-based classification because it used local connections which dramatically reduced the number of parameters making the network easier to train, and it used weight sharing to extract many feature maps which will help better discimiate the image.</p>
 <p>A typical CNN architecture is shown in Fig 1.</p>
 <p><img src="/image/CNN.png" alt="Fig. 1 A Typical CNN Architecture"></p>
-<p>Experiment</p>
+<p>Experiments</p>
+<p>Experiment 1.0</p>
+<p>As a first try I used a 3 layered CNN, the configuration is a follows:</p>
+<pre><code>num_epochs= 100
+image_shape = (128,128)
+filter_sizes = [(5,5),(5,5),(5,5)]
+feature_maps = [20,50,80]
+pooling_sizes = [(2,2),(2,2),(2,2)]
+mlp_hiddens = [1000]
+output_size = 2
+weights_init=Uniform(width=0.2)
+step_rule=Scale(learning_rate=0.1)
+Max_image_dim_limit_method = RandomFixedSizeCrop
+Dataset_processing = rescale to 128*128
+</code></pre><p>Here I used the RandomFixedSizeCrop to crop images into fixed 128*128 pixels, and using the Scale parameter update method (learning rule) from the blocks package. It will update the parameter in a step in the direction proportional to the previous step. And since it is used with GradientDescent alone, it willperform the steepest descent, which might not be a good choice.<br>After 100 epochs, the training error = 26.31%, validation error = 25.77%</p>
 
         
         
