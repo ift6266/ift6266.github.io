@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Cats and Dogs 2.3 (6 Conv layer architecture) with rotation, valid_error 8.32% | Blog IFT6266 H16</title>
+    <title>Cats and Dogs - Summary for the course project | Blog IFT6266 H16</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Yifan Nie">
     
 
     
-    <meta name="description" content="Hi,As mentioned in Blog posts 2.2, this time, I tried to use a 6 layered CNN to conduct experiment, but with more feature maps at each layer, and at the last convolutional layer, there are 512 feature">
+    <meta name="description" content="IntroductionThis semestre’s course has come to an end. And in this course, I choose to do the project of cats and dogs. The goal of this project is to classify images of cats and dogs using the CNN ar">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Cats and Dogs 2.3 (6 Conv layer architecture) with rotation, valid_error 8.32%">
-<meta property="og:url" content="http://yoursite.com/2016/03/20/cats2.3/index.html">
+<meta property="og:title" content="Cats and Dogs - Summary for the course project">
+<meta property="og:url" content="http://yoursite.com/2016/04/15/cats_summary/index.html">
 <meta property="og:site_name" content="Blog IFT6266 H16">
-<meta property="og:description" content="Hi,As mentioned in Blog posts 2.2, this time, I tried to use a 6 layered CNN to conduct experiment, but with more feature maps at each layer, and at the last convolutional layer, there are 512 feature">
+<meta property="og:description" content="IntroductionThis semestre’s course has come to an end. And in this course, I choose to do the project of cats and dogs. The goal of this project is to classify images of cats and dogs using the CNN ar">
 <meta property="og:image" content="http://yoursite.com/image/2.3.png">
-<meta property="og:updated_time" content="2016-03-21T02:59:15.000Z">
+<meta property="og:updated_time" content="2016-04-16T18:43:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cats and Dogs 2.3 (6 Conv layer architecture) with rotation, valid_error 8.32%">
-<meta name="twitter:description" content="Hi,As mentioned in Blog posts 2.2, this time, I tried to use a 6 layered CNN to conduct experiment, but with more feature maps at each layer, and at the last convolutional layer, there are 512 feature">
+<meta name="twitter:title" content="Cats and Dogs - Summary for the course project">
+<meta name="twitter:description" content="IntroductionThis semestre’s course has come to an end. And in this course, I choose to do the project of cats and dogs. The goal of this project is to classify images of cats and dogs using the CNN ar">
 
     
     <link rel="alternative" href="/atom.xml" title="Blog IFT6266 H16" type="application/atom+xml">
@@ -77,14 +77,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/03/20/cats2.3/" title="Cats and Dogs 2.3 (6 Conv layer architecture) with rotation, valid_error 8.32%" itemprop="url">Cats and Dogs 2.3 (6 Conv layer architecture) with rotation, valid_error 8.32%</a>
+      <a href="/2016/04/15/cats_summary/" title="Cats and Dogs - Summary for the course project" itemprop="url">Cats and Dogs - Summary for the course project</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Yifan Nie" target="_blank" itemprop="author">Yifan Nie</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-20T13:28:52.000Z" itemprop="datePublished"> Published 2016-03-20</time>
+    <time datetime="2016-04-15T14:28:52.000Z" itemprop="datePublished"> Published 2016-04-15</time>
     
   </p>
 </header>
@@ -97,7 +97,9 @@
 		
 		</div>
 		
-		<p>Hi,<br>As mentioned in Blog posts 2.2, this time, I tried to use a 6 layered CNN to conduct experiment, but with more feature maps at each layer, and at the last convolutional layer, there are 512 feature maps. More features maps might help the last MLP to better discriminate the image. </p>
+		<p>Introduction<br>This semestre’s course has come to an end. And in this course, I choose to do the project of cats and dogs. The goal of this project is to classify images of cats and dogs using the CNN architecture learned in course.</p>
+<p>More specifically, given an image $X$</p>
+<p>As mentioned in Blog posts 2.2, this time, I tried to use a 6 layered CNN to conduct experiment, but with more feature maps at each layer, and at the last convolutional layer, there are 512 feature maps. More features maps might help the last MLP to better discriminate the image. </p>
 <p>In this experiment 2.3, I still use the Random2DRotation Method to rotate each training image by a random degree, and keep their label untouched, to do regularization, so the model will learn different dogs or cats’images with different random rotated angles. However this time, I tried to set the initial learning rate for Adam() as 0.0005, rather than using its default values.</p>
 <p>As we learned from course, initial learning rate is very important, if it is set big, the optimization will oscillate, and if it is set too big, the optimization process will diverge, it is linked with the inverse of the biggest eigenvalue of the Hessian of the cost function. However if the learning rate is chosen to be too small, the learning will be very slow, and here, as we are using Adam() to decay the learning rate as time elapses, at the end stage the learning rate will be very small can the learning cannot go on effectively.</p>
 <p>And as tried in last experiment 2.2, I still use a learning rate of 0.0005 which seems to work well for this 6 layered architecture.</p>
@@ -130,7 +132,7 @@ dataset_processing = rescale to 256*256
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2016/03/20/cats2.3/" data-title="Cats and Dogs 2.3 (6 Conv layer architecture) with rotation, valid_error 8.32% | Blog IFT6266 H16" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2016/04/15/cats_summary/" data-title="Cats and Dogs - Summary for the course project | Blog IFT6266 H16" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -143,19 +145,11 @@ dataset_processing = rescale to 256*256
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2016/04/15/cats_summary/" title="Cats and Dogs - Summary for the course project">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Cats and Dogs - Summary for the course project</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2016/03/13/cats2.2/"  title="Cats and Dogs 2.2 (6 Conv layer architecture) with rotation, valid_error 8.56%, choice of leanring rate is important">
+<a href="/2016/03/20/cats2.3/"  title="Cats and Dogs 2.3 (6 Conv layer architecture) with rotation, valid_error 8.32%">
  <strong>下一篇：</strong><br/> 
- <span>Cats and Dogs 2.2 (6 Conv layer architecture) with rotation, valid_error 8.56%, choice of leanring rate is important
+ <span>Cats and Dogs 2.3 (6 Conv layer architecture) with rotation, valid_error 8.32%
 </span>
 </a>
 </div>
